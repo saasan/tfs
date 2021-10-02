@@ -9,6 +9,7 @@ services:
     environment:
       TZ: Asia/Tokyo
       FILES_DIR: /var/lib/tfs
+      EXPIRATION_DAYS: ${EXPIRATION_DAYS:-1}
     volumes:
       - tfs-data:/var/lib/tfs
     ports:

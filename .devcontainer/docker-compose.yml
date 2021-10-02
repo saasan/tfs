@@ -9,8 +9,9 @@ services:
     command: /start-reload.sh
     environment:
       TZ: Asia/Tokyo
-      PYTHONDONTWRITEBYTECODE: 1
       FILES_DIR: /var/lib/tfs
+      EXPIRATION_DAYS: ${EXPIRATION_DAYS:-1}
+      PYTHONDONTWRITEBYTECODE: 1
     volumes:
       - ..:/app
       - tfs-data:/var/lib/tfs
