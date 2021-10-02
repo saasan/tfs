@@ -1,16 +1,13 @@
 from fastapi import APIRouter, Request, Path
-from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from settings import settings
 
 
-router = APIRouter(
-    tags=['Web']
-)
+router = APIRouter()
 templates = Jinja2Templates(directory='templates')
 
 
-@router.get('/', response_class=HTMLResponse)
+@router.get('/', include_in_schema=False)
 async def main(request: Request):
     """メイン画面"""
     return templates.TemplateResponse('main.html', {
@@ -20,7 +17,7 @@ async def main(request: Request):
     })
 
 
-@router.get('/files/{file_id}')
+@router.get('/files/{file_id}', include_in_schema=False)
 async def get_file_info(
     request: Request,
     file_id: str = Path(..., min_length=26, max_length=26, regex='^[A-Z0-9]{26}$')
