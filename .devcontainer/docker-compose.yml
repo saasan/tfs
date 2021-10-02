@@ -1,30 +1,30 @@
 version: '3.3'
 services:
-    app:
-        build:
-            context: ..
-            dockerfile: .devcontainer/Dockerfile
-        command: /start-reload.sh
-        environment:
-            TZ: Asia/Tokyo
-            PYTHONDONTWRITEBYTECODE: 1
-            FILES_DIR: /var/lib/tfs
-        volumes:
-            - ..:/app
-            - tfs-data:/var/lib/tfs
-        ports:
-            - 8000:80
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    command: /start-reload.sh
+    environment:
+      TZ: Asia/Tokyo
+      PYTHONDONTWRITEBYTECODE: 1
+      FILES_DIR: /var/lib/tfs
+    volumes:
+      - ..:/app
+      - tfs-data:/var/lib/tfs
+    ports:
+      - 8000:80
 
-    db:
-        image: mysql:8.0
-        environment:
-            TZ: Asia/Tokyo
-            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-            MYSQL_DATABASE: tfs
-        volumes:
-            - mysql-data:/var/lib/mysql
-        command: --default-authentication-plugin=mysql_native_password
+  db:
+    image: mysql:8.0
+    environment:
+      TZ: Asia/Tokyo
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: tfs
+    volumes:
+      - mysql-data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
 
 volumes:
-    tfs-data:
-    mysql-data:
+  tfs-data:
+  mysql-data:
