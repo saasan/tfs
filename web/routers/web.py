@@ -15,7 +15,7 @@ async def main(request: Request):
     """メイン画面"""
     return templates.TemplateResponse('main.html', {
         'request': request,
-        'title': settings.app_name_ui,
+        'page_title': settings.page_title,
         'expiration_days': settings.expiration_days
     })
 
@@ -28,6 +28,6 @@ async def get_file_info(
     """ファイル情報画面"""
     return templates.TemplateResponse('file_info.html', {
         'request': request,
-        'title': settings.app_name_ui,
+        'page_title': settings.page_title,
         'file_id': file_id
     })

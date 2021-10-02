@@ -20,7 +20,7 @@ async def validation_exception_handler(request, e):
         'message.html',
         {
             'request': request,
-            'title': settings.app_name_ui,
+            'title': settings.page_title,
             'message': str(e)
         },
         status_code=422

@@ -7,9 +7,10 @@ services:
     depends_on:
       - db
     environment:
-      TZ: Asia/Tokyo
-      FILES_DIR: /var/lib/tfs
-      EXPIRATION_DAYS: ${EXPIRATION_DAYS:-1}
+      - TZ=Asia/Tokyo
+      - TFS_FILES_DIR=/var/lib/tfs
+      - TFS_PAGE_TITLE
+      - TFS_EXPIRATION_DAYS
     volumes:
       - tfs-data:/var/lib/tfs
     ports:
@@ -18,9 +19,9 @@ services:
   db:
     image: mysql:8.0
     environment:
-      TZ: Asia/Tokyo
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      MYSQL_DATABASE: tfs
+      - TZ=Asia/Tokyo
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=tfs
     volumes:
       - mysql-data:/var/lib/mysql
     command: --default-authentication-plugin=mysql_native_password
