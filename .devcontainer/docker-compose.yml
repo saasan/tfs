@@ -4,6 +4,8 @@ services:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
+    depends_on:
+      - db
     command: /start-reload.sh
     environment:
       TZ: Asia/Tokyo

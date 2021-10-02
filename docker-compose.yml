@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    depends_on:
+      - db
     environment:
       TZ: Asia/Tokyo
       FILES_DIR: /var/lib/tfs
