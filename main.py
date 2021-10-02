@@ -7,7 +7,7 @@ from web.routers import web
 from settings import settings
 
 
-app = FastAPI()
+app = FastAPI(**settings.fastapi_kwargs)
 app.mount('/static', StaticFiles(directory='static'), name='static')
 app.include_router(file.router)
 app.include_router(web.router)

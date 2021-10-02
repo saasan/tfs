@@ -11,6 +11,7 @@ services:
       - TFS_FILES_DIR=/var/lib/tfs
       - TFS_PAGE_TITLE
       - TFS_EXPIRATION_DAYS
+      - TFS_DISABLE_DOCS=True
     volumes:
       - tfs-data:/var/lib/tfs
     ports:
