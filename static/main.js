@@ -49,13 +49,27 @@ function onUploadComplete(result) {
     tableBody.insertAdjacentHTML('afterbegin', tr.join(''));
 }
 
+function onDragOver(event) {
+    event.preventDefault();
+
+    const modalElement = document.getElementById('upload-modal');
+    let modal = bootstrap.Modal.getInstance(modalElement);
+
+    if (modal === null) {
+        modal = new bootstrap.Modal(document.getElementById('upload-modal'));
+    }
+    modal.show();
+}
+
 function onDOMContentLoaded() {
     const uppy = Uppy.Core({
-        locale: Uppy.locales.ja_JP
+        locale: Uppy.locales.ja_JP,
+        autoProceed: true
     })
         .use(Uppy.Dashboard, {
             inline: true,
-            target: '#drag-drop-area'
+            target: '#drag-drop-area',
+            width: '100%'
         })
         .use(Uppy.XHRUpload, {
             endpoint: '/api/files/',
@@ -64,6 +78,8 @@ function onDOMContentLoaded() {
         });
 
     uppy.on('complete', result => onUploadComplete(result));
+
+    document.addEventListener('dragover', onDragOver);
 
     getFileList();
 }
