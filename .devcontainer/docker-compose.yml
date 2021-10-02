@@ -11,7 +11,7 @@ services:
       - TZ=Asia/Tokyo
       - TFS_FILES_DIR=/var/lib/tfs
       - TFS_PAGE_TITLE
-      - TFS_EXPIRATION_DAYS
+      - TFS_FILE_EXPIRE_DAYS
       - PYTHONDONTWRITEBYTECODE=1
     volumes:
       - ..:/app

@@ -94,7 +94,7 @@ async def remove_expired_file(db: AsyncSession) -> None:
     期限が過ぎたファイルを削除する
     """
     now: int = ulid.new().timestamp().int
-    expiration: int = now - (settings.expiration_days * 24 * 60 * 60 * 1000)
+    expiration: int = now - (settings.file_expire_days * 24 * 60 * 60 * 1000)
 
     files: List[file_model.File] = await file_crud.get_expired_files(db, expiration)
 

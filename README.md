@@ -41,14 +41,14 @@
 
 ページのタイトル
 
-### TFS_EXPIRATION_DAYS
+### TFS_FILE_EXPIRE_DAYS
 
 ファイルの保存日数
 
 ### .env ファイルの例
 
     TFS_PAGE_TITLE=タイトル
-    TFS_EXPIRATION_DAYS=30
+    TFS_FILE_EXPIRE_DAYS=30
 
 ## Docker のボリューム
 

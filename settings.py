@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     # ファイルダウンロード時のMIMEタイプ
     download_mimetype: str = 'application/octet-stream'
     # ファイルの保存日数
-    expiration_days: int = 1
+    file_expire_days: int = 1
     # ドキュメントの自動生成を無効化
     disable_docs: bool = False
 

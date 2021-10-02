@@ -16,7 +16,7 @@ async def main(request: Request):
     return templates.TemplateResponse('main.html', {
         'request': request,
         'page_title': settings.page_title,
-        'expiration_days': settings.expiration_days
+        'file_expire_days': settings.file_expire_days
     })
 
 
