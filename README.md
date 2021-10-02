@@ -8,13 +8,15 @@
 
 ## 起動
 
+    git clone git@github.com:saasan/tfs.git
+    cd tfs
     docker-compose up -d
 
 開発時は
 [Visual Studio Code Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 で起動可能。
 
-## DBの初期化
+## DB の初期化
 
 初回起動後、以下のコマンドでDBを初期化する。
 
