@@ -16,7 +16,7 @@ services:
       - ..:/app
       - tfs-data:/var/lib/tfs
     ports:
-      - 8000:80
+      - 8080:80
 
   db:
     image: mysql:8.0
