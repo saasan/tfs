@@ -12,9 +12,11 @@ async def create_file(db: AsyncSession, file: file_model.File) -> file_model.Fil
     return file
 
 
-async def get_files(db: AsyncSession) ->  List[file_model.File]:
+async def get_files(db: AsyncSession, expiration: int) ->  List[file_model.File]:
     result: Result = await db.execute(
-        select(file_model.File).order_by(file_model.File.id)
+        select(file_model.File)
+            .filter(file_model.File.upload_epoch_ms >= expiration)
+            .order_by(file_model.File.id)
     )
     all: List[Tuple[file_model.File]] = result.all()
 

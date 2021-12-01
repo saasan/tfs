@@ -89,13 +89,20 @@ async def remove_upload_file(file_id: str, filename: str) -> None:
         await aiofiles.os.remove(path)
 
 
+def get_expiration() -> int:
+    """
+    現在のファイル保存期限を取得する
+    """
+    now: int = ulid.new().timestamp().int
+    expiration: int = now - (settings.file_expire_days * 24 * 60 * 60 * 1000)
+    return expiration
+
+
 async def remove_expired_file(db: AsyncSession) -> None:
     """
     期限が過ぎたファイルを削除する
     """
-    now: int = ulid.new().timestamp().int
-    expiration: int = now - (settings.file_expire_days * 24 * 60 * 60 * 1000)
-
+    expiration: int = get_expiration()
     files: List[file_model.File] = await file_crud.get_expired_files(db, expiration)
 
     for file in files:
@@ -142,7 +149,8 @@ async def list_files(
     # バックグラウンドで期限が過ぎたファイルを削除
     background_tasks.add_task(remove_expired_file, db)
 
-    return await file_crud.get_files(db)
+    expiration: int = get_expiration()
+    return await file_crud.get_files(db, expiration)
 
 
 @router.get('/{file_id}')
