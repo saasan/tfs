@@ -31,9 +31,21 @@ function showToast(message) {
 }
 
 function copyLink(file_id) {
-    const host = location.protocol + '//' + location.host;
-    navigator.clipboard.writeText(`${host}/files/${file_id}`);
-    showToast('コピーしました。');
+    const text = `${location.protocol}//${location.host}/files/${file_id}`;
+
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => {
+            showToast('コピーしました。');
+        }).catch(() => {
+            showToast('コピーに失敗しました。');
+        });
+    }
+    else if (location.protocol != 'https:') {
+        showToast('HTTPSではないためコピーできません。');
+    }
+    else {
+        showToast('コピーできません。');
+    }
 }
 
 function removeFile(file_id, file_name) {
