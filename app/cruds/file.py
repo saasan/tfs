@@ -2,7 +2,7 @@ from typing import List, Tuple, Optional
 from sqlalchemy import select
 from sqlalchemy.engine import Result
 from sqlalchemy.ext.asyncio import AsyncSession
-import api.models.file as file_model
+import models.file as file_model
 
 
 async def create_file(db: AsyncSession, file: file_model.File) -> file_model.File:

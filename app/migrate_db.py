@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from api.models.file import Base
+from models.file import Base
 from settings import settings
 
 

@@ -1,16 +1,16 @@
 import math
 import os
 import shutil
-import aiofiles
+import aiofiles.os
 from typing import List
 from fastapi import APIRouter, Path, Depends, HTTPException, File, UploadFile, BackgroundTasks
 from fastapi.responses import FileResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 import ulid
-import api.cruds.file as file_crud
-import api.models.file as file_model
-import api.schemas.file as file_schema
-from api.db import get_db
+import cruds.file as file_crud
+import models.file as file_model
+import schemas.file as file_schema
+from db import get_db
 from settings import settings
 
 
@@ -81,11 +81,8 @@ async def remove_upload_file(file_id: str, filename: str) -> None:
     # ファイルが保存されているパス
     path: str = os.path.join(settings.files_dir, file_id + ext)
 
-    # 非同期で使えるようラップ
-    isfile = aiofiles.os.wrap(os.path.isfile)
-
     # ファイルを削除
-    if await isfile(path):
+    if await aiofiles.os.path.isfile(path):
         await aiofiles.os.remove(path)
 
 
@@ -173,11 +170,8 @@ async def get_file(
         filename=file.name
     )
 
-    # 非同期で使えるようラップ
-    isfile = aiofiles.os.wrap(os.path.isfile)
-
     # ファイルを送信
-    if await isfile(path):
+    if await aiofiles.os.path.isfile(path):
         return response
     else:
         raise HTTPException(status_code=404, detail='File not found')

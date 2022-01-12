@@ -28,7 +28,7 @@ function showFileList(files) {
     tableBody.innerHTML = tr.join('');
 }
 
-async function getFileList() {
+function getFileList() {
     fetch('/api/files/')
         .then(response => {
             if (!response.ok) {
@@ -62,20 +62,20 @@ function onDragOver(event) {
 }
 
 function onDOMContentLoaded() {
-    const uppy = Uppy.Core({
+    const uppy = new Uppy.Core({
         locale: Uppy.locales.ja_JP,
         autoProceed: true
-    })
-        .use(Uppy.Dashboard, {
-            inline: true,
-            target: '#drag-drop-area',
-            width: '100%'
-        })
-        .use(Uppy.XHRUpload, {
-            endpoint: '/api/files/',
-            formData: true,
-            fieldName: 'upload_file'
-        });
+    });
+    uppy.use(Uppy.Dashboard, {
+        inline: true,
+        target: '#drag-drop-area',
+        width: '100%'
+    });
+    uppy.use(Uppy.XHRUpload, {
+        endpoint: '/api/files/',
+        formData: true,
+        fieldName: 'upload_file'
+    });
 
     uppy.on('complete', result => onUploadComplete(result));
 

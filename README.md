@@ -20,7 +20,7 @@
 
 初回起動後、以下のコマンドでDBを初期化する。
 
-    docker-compose exec app python -m api.migrate_db
+    docker-compose exec app python -m migrate_db
 
 ## ブラウザで開く
 

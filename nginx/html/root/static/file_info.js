@@ -41,7 +41,14 @@ function showFileInfo(file) {
     buttons.innerHTML = generateButtons(file);
 }
 
-async function getFileInfo() {
+function getFileInfo() {
+    if (!/^\/files\/([A-Z0-9]{26})$/.test(location.pathname)) {
+        showToast('file_id がありません。');
+        return;
+    }
+
+    const file_id = location.pathname.substring(location.pathname.length - 26);
+
     fetch(`/api/files/${file_id}/info`)
         .then(response => {
             if (!response.ok) {

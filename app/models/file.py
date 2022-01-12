@@ -1,5 +1,5 @@
-from sqlalchemy import Column, String, BigInteger, DateTime
-from api.db import Base
+from sqlalchemy import Column, String, BigInteger
+from db import Base
 
 
 class File(Base):

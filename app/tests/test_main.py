@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
 import starlette.status
 from freezegun import freeze_time
-from api.db import get_db, Base
+from db import get_db, Base
 from main import app
 
 
