@@ -17,8 +17,6 @@ services:
         source: ./nginx/default.conf
         target: /etc/nginx/templates/default.conf.template
         read_only: true
-    ports:
-      - 80:80
     restart: always
 
   app:

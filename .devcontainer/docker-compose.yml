@@ -1,59 +1,17 @@
 version: '3.3'
 services:
   nginx:
-    image: nginx
-    depends_on:
-      - app
-    environment:
-      - TZ=Asia/Tokyo
-      - TFS_PAGE_TITLE=${TFS_PAGE_TITLE:-一時ファイル置き場}
-      - TFS_FILE_EXPIRE_DAYS=${TFS_FILE_EXPIRE_DAYS:-1}
-    volumes:
-      - type: bind
-        source: ../nginx/html
-        target: /usr/share/nginx/html
-        read_only: true
-      - type: bind
-        source: ../nginx/default.conf
-        target: /etc/nginx/templates/default.conf.template
-        read_only: true
     ports:
       - 8080:80
 
   app:
     build:
-      context: ..
       dockerfile: .devcontainer/Dockerfile
-    depends_on:
-      - db
     command: /start-reload.sh
     environment:
-      - TZ=Asia/Tokyo
-      - TFS_FILES_DIR=/var/lib/tfs
-      - TFS_PAGE_TITLE
-      - TFS_FILE_EXPIRE_DAYS
       - TFS_ENABLE_DOCS=True
       - PYTHONDONTWRITEBYTECODE=1
     volumes:
       - type: bind
-        source: ../app
+        source: ./app
         target: /app
-      - type: volume
-        source: tfs-data
-        target: /var/lib/tfs
-
-  db:
-    image: mysql:8.0
-    environment:
-      - TZ=Asia/Tokyo
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-      - MYSQL_DATABASE=tfs
-    volumes:
-      - type: volume
-        source: mysql-data
-        target: /var/lib/mysql
-    command: --default-authentication-plugin=mysql_native_password
-
-volumes:
-  tfs-data:
-  mysql-data:
