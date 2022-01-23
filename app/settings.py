@@ -14,14 +14,14 @@ class Settings(BaseSettings):
     download_mimetype: str = 'application/octet-stream'
     # ファイルの保存日数
     file_expire_days: int = 1
-    # ドキュメントの自動生成を無効化
-    disable_docs: bool = False
+    # ドキュメントの自動生成を有効化
+    enable_docs: bool = False
 
     @property
     def fastapi_kwargs(self) -> dict[str, Any]:
         fastapi_kwargs: dict[str, Any] = {
         }
-        if self.disable_docs:
+        if not self.enable_docs:
             fastapi_kwargs.update({
                 'docs_url': None,
                 'openapi_url': None,

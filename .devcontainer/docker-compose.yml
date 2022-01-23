@@ -32,6 +32,7 @@ services:
       - TFS_FILES_DIR=/var/lib/tfs
       - TFS_PAGE_TITLE
       - TFS_FILE_EXPIRE_DAYS
+      - TFS_ENABLE_DOCS=True
       - PYTHONDONTWRITEBYTECODE=1
     volumes:
       - type: bind

@@ -32,7 +32,6 @@ services:
       - TFS_FILES_DIR=/var/lib/tfs
       - TFS_PAGE_TITLE
       - TFS_FILE_EXPIRE_DAYS
-      - TFS_DISABLE_DOCS=True
     volumes:
       - type: volume
         source: tfs-data
