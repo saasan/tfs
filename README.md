@@ -59,3 +59,7 @@
 ### mysql-data
 
 アップロードされたファイルのサイズなどの情報が保存される。
+
+## Swagger UI の URL
+
+<http://localhost:8080/api/docs>

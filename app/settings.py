@@ -20,6 +20,7 @@ class Settings(BaseSettings):
     @property
     def fastapi_kwargs(self) -> dict[str, Any]:
         fastapi_kwargs: dict[str, Any] = {
+            'root_path': '/api'
         }
         if not self.enable_docs:
             fastapi_kwargs.update({

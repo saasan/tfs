@@ -61,7 +61,7 @@ async def test_api_crud(async_client):
     FILES = { PARAM_NAME: (FILE_NAME, FILE_CONTENT, FILE_MIMETYPE) }
 
     # Upload File
-    response = await async_client.post('/api/files/', files=FILES)
+    response = await async_client.post('/files/', files=FILES)
     assert response.status_code == starlette.status.HTTP_200_OK
     response_obj = response.json()
     assert len(response_obj['id']) == ULID_LENGTH
@@ -75,7 +75,7 @@ async def test_api_crud(async_client):
     file_id = response_obj['id']
 
     # List Files
-    response = await async_client.get('/api/files/')
+    response = await async_client.get('/files/')
     assert response.status_code == starlette.status.HTTP_200_OK
     response_obj = response.json()
     assert len(response_obj) == 1
@@ -87,7 +87,7 @@ async def test_api_crud(async_client):
     assert response_obj[0]['human_readable_size'] == FILE_HUMAN_READABLE_SIZE
 
     # Get File Info
-    response = await async_client.get(f'/api/files/{file_id}/info')
+    response = await async_client.get(f'/files/{file_id}/info')
     assert response.status_code == starlette.status.HTTP_200_OK
     response_obj = response.json()
     assert len(response_obj['id']) == ULID_LENGTH
@@ -98,10 +98,10 @@ async def test_api_crud(async_client):
     assert response_obj['human_readable_size'] == FILE_HUMAN_READABLE_SIZE
 
     # Get File
-    response = await async_client.get(f'/api/files/{file_id}')
+    response = await async_client.get(f'/files/{file_id}')
     assert response.status_code == starlette.status.HTTP_200_OK
     assert response.content == FILE_CONTENT
 
     # Remove File
-    response = await async_client.delete(f'/api/files/{file_id}')
+    response = await async_client.delete(f'/files/{file_id}')
     assert response.status_code == starlette.status.HTTP_200_OK

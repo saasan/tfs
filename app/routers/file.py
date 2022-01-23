@@ -15,7 +15,7 @@ from settings import settings
 
 
 router = APIRouter(
-    prefix='/api/files',
+    prefix='/files',
     tags=['Files API']
 )
 
