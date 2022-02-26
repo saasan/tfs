@@ -8,16 +8,16 @@ ARG GID=1000
 RUN addgroup --gid $GID $USERNAME \
     && adduser --uid $UID --gid $GID --disabled-password $USERNAME
 
-# ディレクトリのオーナーが$UID:$GIDになるよう先に作成しておく
-RUN mkdir /var/lib/tfs && chown $UID:$GID /var/lib/tfs
+# ディレクトリへ書き込めるようパーミッションを変更しておく
+RUN mkdir /var/lib/tfs && chmod a+w /var/lib/tfs
 
 # gitのインストール
-RUN apt update && apt install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
-    && apt clean \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install poetry \
+RUN pip install --no-cache-dir poetry \
     && poetry config virtualenvs.create false
 
 WORKDIR /app
