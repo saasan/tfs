@@ -121,7 +121,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "fastapi"
-version = "0.71.0"
+version = "0.74.1"
 description = "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
 category = "main"
 optional = false
@@ -531,7 +531,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "cd40201c15d8362dbbdd7b9d43384a46d2f8f6b681fbe6d421da5731e5a15048"
+content-hash = "4f7c83900cb865b1fe9777d3a4d28a1f89b789df31dce74bd35d6f94959a6001"
 
 [metadata.files]
 aiofiles = [
@@ -579,8 +579,8 @@ colorama = [
     {file = "colorama-0.4.4.tar.gz", hash = "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"},
 ]
 fastapi = [
-    {file = "fastapi-0.71.0-py3-none-any.whl", hash = "sha256:a78eca6b084de9667f2d5f37e2ae297270e5a119cd01c2f04815795da92fc87f"},
-    {file = "fastapi-0.71.0.tar.gz", hash = "sha256:2b5ac0ae89c80b40d1dd4b2ea0bb1f78d7c4affd3644d080bf050f084759fff2"},
+    {file = "fastapi-0.74.1-py3-none-any.whl", hash = "sha256:b8ec8400623ef0b2ff558ebe06753b349f8e3a5dd38afea650800f2644ddba34"},
+    {file = "fastapi-0.74.1.tar.gz", hash = "sha256:b58a2c46df14f62ebe6f24a9439927539ba1959b9be55ba0e2f516a683e5b9d4"},
 ]
 freezegun = [
     {file = "freezegun-1.1.0-py2.py3-none-any.whl", hash = "sha256:2ae695f7eb96c62529f03a038461afe3c692db3465e215355e1bb4b0ab408712"},

@@ -6,7 +6,7 @@ authors = ["saasan"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-fastapi = "^0.71.0"
+fastapi = "^0.74.1"
 uvicorn = {extras = ["standard"], version = "^0.16.0"}
 aiomysql = "^0.0.22"
 sqlalchemy = "^1.4.31"
