@@ -74,7 +74,9 @@ function onDOMContentLoaded() {
     uppy.use(Uppy.XHRUpload, {
         endpoint: '/api/files/',
         formData: true,
-        fieldName: 'upload_file'
+        fieldName: 'upload_file',
+        timeout: 3 * 60 * 1000,
+        limit: 1
     });
 
     uppy.on('complete', result => onUploadComplete(result));
