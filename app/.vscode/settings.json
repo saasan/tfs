@@ -1,6 +1,8 @@
 {
     "python.testing.pytestArgs": [
-        "tests"
+        "tests",
+        "-o",
+        "cache_dir=/tmp/pytest-cache"
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true
