@@ -5,5 +5,5 @@ RUN pip install --no-cache-dir poetry \
 
 WORKDIR /app
 
-COPY app ./
+COPY . .
 RUN poetry install --no-root --no-dev

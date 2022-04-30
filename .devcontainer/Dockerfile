@@ -22,5 +22,5 @@ RUN pip install --no-cache-dir poetry \
 
 WORKDIR /app
 
-COPY app/pyproject.toml* app/poetry.lock* ./
+COPY pyproject.toml* poetry.lock* ./
 RUN poetry install --no-root

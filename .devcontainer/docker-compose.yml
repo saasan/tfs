@@ -6,7 +6,7 @@ services:
 
   app:
     build:
-      dockerfile: .devcontainer/Dockerfile
+      dockerfile: ../.devcontainer/Dockerfile
     command: /start-reload.sh
     environment:
       - TFS_ENABLE_DOCS=True
